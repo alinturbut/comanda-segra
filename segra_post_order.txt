@@ -1,0 +1,26 @@
+POST
+http://www.salanunta.ro/catering-zilnic.html?action=send
+
+headers:
+Host: www.salanunta.ro
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://www.salanunta.ro/catering-zilnic.html
+Cookie: segra=f7d7782ee753d46442867b30ee478d8b
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+body:
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 551
+
+week_id=2&start_date=2016-11-14&end_date=2016-11-18&comanda%5Ba1_3%5D=&comanda%5Ba2_3%5D=&comanda%5Ba3_3%5D=2&comanda%5Ba4_3%5D=&comanda%5Ba5_3%5D=&comanda%5Bb1_3%5D=1&comanda%5Bb2_3%5D=&comanda%5Bb3_3%5D=1&comanda%5Bb4_3%5D=2&comanda%5Bb5_3%5D=1&comanda%5Bb6_3%5D=&comanda%5Bb7_3%5D=&comanda%5Bb8_3%5D=2&comanda%5Bb9_3%5D=&comanda%5Bc1_3%5D=&comanda%5Bc2_3%5D=2&comanda%5Bs1_3%5D=&comanda%5Bs2_3%5D=&comanda%5Bs3_3%5D=&comanda%5Bs4_3%5D=&comanda%5Bs5_3%5D=&comanda%5Bs6_3%5D=&comanda%5Bd1_3%5D=&comanda%5Bd2_3%5D=&comanda%5Bd3_3%5D=&comanda%5Bp_3%5D=
+
+cookies:
+segra:"f7d7782ee753d46442867b30ee478d8b"
+
+Response: 302
