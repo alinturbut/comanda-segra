@@ -6,6 +6,7 @@ import 'dart:html';
 void sendOrder(sheetData) {
     //Not sure, but I think we need this cookie first.
     String cookie = getCookie();
+
     //Sending the order is a 2-step process.
     //First, we have to send the actual order items.
     //Then, the server will redirect us to the page with the order details form
