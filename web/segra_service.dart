@@ -1,8 +1,6 @@
 import 'constants.dart';
 import 'dart:html';
 
-
-
 void sendOrder(sheetData) {
     //Not sure, but I think we need this cookie first.
     String cookie = getCookie();
