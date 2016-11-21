@@ -24,6 +24,7 @@ Future extractNeededInformation() {
   Map segraOrder = createSegraOrderMap();
   return spreadsheet.getSegraInfoFromRange(getCurrentDayRange()).then((response) {
     results = JSON.decode(response.body);
+    Completer completer = new Completer();
 
     if(results != '') {
       print('A1: ' + results['values'][0][0]);
@@ -99,13 +100,19 @@ Future extractNeededInformation() {
       print('P: ' + results['values'][22][0]);
       segraOrder['P'] = results['values'][22][0];
 
-      return segraOrder;
+      spreadsheet.getSegraComments().then((response) {
+        segraOrder['obs'] = JSON.decode(response.body)['valueRanges'][0]['values'][0][0];
+
+        completer.complete(segraOrder);
+      });
+
+      return completer.future;
     }
   });
 }
 
 Map createSegraOrderMap() {
-  Map segraOrderMap = new Map<String, int>();
+  Map segraOrderMap = new Map<String, dynamic>();
   segraOrderMap['A1'] = 0;
   segraOrderMap['A2'] = 0;
   segraOrderMap['A3'] = 0;
@@ -137,6 +144,7 @@ Map createSegraOrderMap() {
   segraOrderMap['D3'] = 0;
 
   segraOrderMap['P'] = 0;
+  segraOrderMap['obs'] = '';
 
   return segraOrderMap;
 }
