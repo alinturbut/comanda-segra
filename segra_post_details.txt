@@ -1,0 +1,26 @@
+POST
+http://www.salanunta.ro/catering-zilnic.comanda.html
+
+headers:
+Host: www.salanunta.ro
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://www.salanunta.ro/catering-zilnic.comanda.html
+Cookie: segra=f7d7782ee753d46442867b30ee478d8b
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+body:
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 419
+
+submitted=1&action=review&week_id=2&client_info%5Bname%5D=Cristian+Popa&client_info%5Bcompany%5D=&client_info%5Bphone%5D=0725515970&client_info%5Bemail%5D=&client_info%5Baddress%5D=Str.+Garii+nr.+21&client_info%5Bdeliv_time%5D=12%3A00&client_info%5Bobs%5D=La+un+B4+pieptul+de+pui+sa+fie+bine+gatit.%0D%0ALa+celalalt+B4+-+orez+in+loc+de+cartofi.%0D%0ALa+B8+sa+fie+orez+in+loc+de+cartofi+prajiti.%0D%0A&btn_submit=Trimite
+
+cookies:
+segra:"f7d7782ee753d46442867b30ee478d8b"
+
+Response: 302
