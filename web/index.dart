@@ -97,7 +97,8 @@ main() {
   ButtonElement listButton = querySelector('#list_button');
 
   print("before");
-  spreadsheet.getRangeExample().then((response) {print("After");});
+  //spreadsheet.getRangeExample().then((response) {print("After");});
+  spreadsheet.getSegraOrderItemsForToday().then((response) {print("JAJA");});
 
   authorizedClient(loginButton, identifier, scopes).then((client) {
     loginButton.disabled = true;
