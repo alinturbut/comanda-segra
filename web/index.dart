@@ -5,9 +5,8 @@
 import 'segra_logic.dart' as segra;
 
 main(){
-
-  print("before");
-  //spreadsheet.getRangeExample().then((response) {print("After");});
-  segra.extractNeededInformation();
+  segra.extractNeededInformation().then((segraMap) {
+    print(segraMap['B4']);
+  });
 
 }
