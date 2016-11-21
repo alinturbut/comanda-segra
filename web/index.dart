@@ -6,7 +6,6 @@ import 'segra_logic.dart' as segra;
 
 main(){
   segra.extractNeededInformation().then((segraMap) {
-    print(segraMap['B4']);
+    print(segraMap['obs']);
   });
-
 }
