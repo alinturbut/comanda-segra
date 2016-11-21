@@ -6,19 +6,17 @@ import 'dart:html';
 void sendOrder(sheetData) {
     //Not sure, but I think we need this cookie first.
     String cookie = getCookie();
+    Map<String, String> requestHeaders = headers;
+    requestHeaders.putIfAbsent("Cookie", () {cookie;});
 
     //Sending the order is a 2-step process.
     //First, we have to send the actual order items.
     //Then, the server will redirect us to the page with the order details form
     //(name, address, phone, comments etc.)
     Map<String, String> orderFormData = prepareOrderFormData(sheetData);
-    HttpRequest.postFormData(segraOrderUrl, orderFormData, requestHeaders: {
-        "Cookie": cookie
-    }).then((response) {
+    HttpRequest.postFormData(segraOrderUrl, orderFormData, requestHeaders: requestHeaders).then((response) {
         Map<String, String> orderDetailsData = prepareOrderDetailsData(sheetData);
-        HttpRequest.postFormData(segraDetailsUrl, orderDetailsData, requestHeaders: {
-            "Cookie": cookie
-        });
+        HttpRequest.postFormData(segraDetailsUrl, orderDetailsData, requestHeaders: requestHeaders);
     });
 }
 
@@ -116,3 +114,16 @@ Map<String, String> prefixMap(Map<String, String> map, String prefix) {
 
     return result;
 }
+
+final Map<String, String> headers = {
+    "Host": "www.salanunta.ro",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate",
+    "Referer": "http://www.salanunta.ro/catering-zilnic.html",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Pragma": "no-cache",
+    "Cache-Control": "no-cache"
+};
