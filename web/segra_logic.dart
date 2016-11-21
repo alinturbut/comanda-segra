@@ -97,8 +97,18 @@ Future extractNeededInformation() {
       segraOrder['S6'] = results['values'][21][0];
 
 
-      print('P: ' + results['values'][22][0]);
-      segraOrder['P'] = results['values'][22][0];
+      print('D1: ' + results['values'][22][0]);
+      segraOrder['D1'] = results['values'][22][0];
+
+      print('D2: ' + results['values'][23][0]);
+      segraOrder['D2'] = results['values'][23][0];
+
+      print('D3: ' + results['values'][24][0]);
+      segraOrder['D3'] = results['values'][24][0];
+
+
+      print('P: ' + results['values'][25][0]);
+      segraOrder['P'] = results['values'][25][0];
 
       spreadsheet.getSegraComments().then((response) {
         segraOrder['obs'] = JSON.decode(response.body)['valueRanges'][0]['values'][0][0];
