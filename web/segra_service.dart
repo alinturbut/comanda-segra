@@ -1,7 +1,8 @@
 import 'constants.dart';
 import 'dart:html';
+import 'segra_logic.dart';
 
-void sendOrder(sheetData) {
+void sendOrder() {
     //Not sure, but I think we need this cookie first.
     String cookie = getCookie();
     Map<String, String> requestHeaders = headers;
@@ -11,49 +12,52 @@ void sendOrder(sheetData) {
     //First, we have to send the actual order items.
     //Then, the server will redirect us to the page with the order details form
     //(name, address, phone, comments etc.)
-    Map<String, String> orderFormData = prepareOrderFormData(sheetData);
-    HttpRequest.postFormData(segraOrderUrl, orderFormData, requestHeaders: requestHeaders).then((response) {
-        Map<String, String> orderDetailsData = prepareOrderDetailsData(sheetData);
-        HttpRequest.postFormData(segraDetailsUrl, orderDetailsData, requestHeaders: requestHeaders);
+    extractNeededInformation().then((sheetData) {
+        Map<String, String> orderFormData = prepareOrderFormData(sheetData);
+        HttpRequest.postFormData(segraOrderUrl, orderFormData, requestHeaders: requestHeaders).then((response) {
+            Map<String, String> orderDetailsData = prepareOrderDetailsData(sheetData);
+            HttpRequest.postFormData(segraDetailsUrl, orderDetailsData, requestHeaders: requestHeaders);
+        });
     });
+
 }
 
 //See segra_post_order.txt for reference
-Map<String, String> prepareOrderFormData(sheetData) {
+Map<String, String> prepareOrderFormData(Map<String, dynamic> sheetData) {
 
     //Put sheet data here (replace the nulls):
     Map<String, String> comanda = {
-        "a1_3": null,
-        "a2_3": null,
-        "a3_3": null,
-        "a4_3": null,
-        "a5_3": null,
+        "a1_3": sheetData["A1"],
+        "a2_3": sheetData["A2"],
+        "a3_3": sheetData["A3"],
+        "a4_3": sheetData["A4"],
+        "a5_3": sheetData["A5"],
 
-        "b1_3": null,
-        "b2_3": null,
-        "b3_3": null,
-        "b4_3": null,
-        "b5_3": null,
-        "b6_3": null,
-        "b7_3": null,
-        "b8_3": null,
-        "b9_3": null,
+        "b1_3": sheetData["B1"],
+        "b2_3": sheetData["B2"],
+        "b3_3": sheetData["B3"],
+        "b4_3": sheetData["B4"],
+        "b5_3": sheetData["B5"],
+        "b6_3": sheetData["B6"],
+        "b7_3": sheetData["B7"],
+        "b8_3": sheetData["B8"],
+        "b9_3": sheetData["B9"],
 
-        "c1_3": null,
-        "c2_3": null,
+        "c1_3": sheetData["C1"],
+        "c2_3": sheetData["C2"],
 
-        "s1_3": null,
-        "s2_3": null,
-        "s3_3": null,
-        "s4_3": null,
-        "s5_3": null,
-        "s6_3": null,
+        "s1_3": sheetData["S1"],
+        "s2_3": sheetData["S2"],
+        "s3_3": sheetData["S3"],
+        "s4_3": sheetData["S4"],
+        "s5_3": sheetData["S5"],
+        "s6_3": sheetData["S6"],
 
-        "d1_3": null,
-        "d2_3": null,
-        "d3_3": null,
+        "d1_3": sheetData["D1"],
+        "d2_3": sheetData["D2"],
+        "d3_3": sheetData["D3"],
 
-        "p_3": null
+        "p_3": sheetData["P"]
     };
 
     Map<String, String> orderFormData = {
