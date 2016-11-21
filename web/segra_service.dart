@@ -111,7 +111,7 @@ String getCookie() {
 Map<String, String> prefixMap(Map<String, String> map, String prefix) {
     Map<String, String> result;
     map.forEach((key, value) {
-        result.putIfAbsent(prefix + "[" + key + "]", value);
+        result.putIfAbsent(prefix + "[" + key + "]", () => value);
     });
 
     return result;
