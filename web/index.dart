@@ -2,10 +2,11 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'segra_logic.dart' as segra;
+import 'segra_service.dart' as segra;
+import 'dart:html';
 
 main(){
-  segra.extractNeededInformation().then((segraMap) {
-    print(segraMap['obs']);
+  segra.sendOrder().then((response) {
+    querySelector("#segraResult").setInnerHtml(response);
   });
 }
